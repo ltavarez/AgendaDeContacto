@@ -14,6 +14,7 @@ using Database.Models;
 using System.Configuration;
 using System.IO;
 using AgendaProg1.CustomControlItem;
+using EmailHandler;
 
 namespace AgendaProg1
 {
@@ -22,6 +23,8 @@ namespace AgendaProg1
         private readonly PersonService _service;
         private int _id;
         private string _filename;
+
+        private readonly EmailSender _emailSender;
 
         private readonly TipoContactoRepositoryDatabase _repositoryTipoContacto;
 
@@ -37,6 +40,8 @@ namespace AgendaProg1
 
             _service = new PersonService(connection);
             _repositoryTipoContacto = new TipoContactoRepositoryDatabase(connection);
+
+            _emailSender = new EmailSender();
         }
 
         #region Events
@@ -125,6 +130,7 @@ namespace AgendaProg1
             LoadData();
             ClearData();
 
+            _emailSender.SendMail("phpitladiplomado@gmail.com","Notificacion de nuevo contacto","Se ha agregado este nuevo contacto: " + person.Name + " " + person.LastName);
 
         }
 

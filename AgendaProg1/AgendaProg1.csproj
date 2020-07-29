@@ -100,6 +100,10 @@
       <Project>{78a5444f-fd9f-4a41-9f4e-b6bb2152aa31}</Project>
       <Name>Database</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EmailHandler\EmailHandler.csproj">
+      <Project>{42943750-6872-4b6a-aa32-ed2c802c84f9}</Project>
+      <Name>EmailHandler</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
